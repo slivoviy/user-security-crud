@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <base href="/"/>
+    <link rel="shortcut icon" th:href="@{img/icon.ico}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css">
+    <title>Email taken</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h1 class="text-center">Sorry this email is taken already.</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3 align-self-center">
+            <a class="btn btn-primary" aria-current="page" href="/admin/">Choose different email</a>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>

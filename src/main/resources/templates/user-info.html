@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h2>User Info</h2>
+
+<div>
+    <form action="#" th:action="@{/admin/saveUser}" method="post" th:object="${newUser}">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Name <input type="text" required="required" pattern="[A-Za-zА-Яа-яЁё]{1,32}"
+                           th:field="*{firstName}"></label>
+        <br><br>
+        <label>Last Name <input type="text" required="required" pattern="[A-Za-zА-Яа-яЁё]{1,32}" th:field="*{lastName}"></label>
+        <br><br>
+        <label>E-mail <input type="email" required="required" th:field="*{email}"></label>
+        <br><br>
+        <label>Username <input type="text" required="required" th:field="*{username}"></label>
+        <br><br>
+        <label>Password <input type="password" required="required" th:field="*{password}"></label>
+        <br><br>
+
+        <label>Role #1 <input list="roles" placeholder="Required" required="required" name="auth1"
+                              th:value="*{authorities != null} ? *{authorities[0].authority} : ''"></label>
+        <br><br>
+        <label>Role #2 <input list="roles" placeholder="Not required" name="auth2"
+                              th:value="*{(authorities != null) && (authorities.size() > 1) && (authorities[1] != null)} ? *{authorities[1].authority} : ''"></label>
+        <br><br>
+        <datalist id="roles">
+            <option text=""></option>
+            <option th:each="r : ${rolesList}" th:text="${r}"/>
+        </datalist>
+
+        <input type="submit" value="OK">
+        <br>
+        <div th:if="${userAlreadyExists}">
+            <p style="color: red">Username already exists! Please choose a different username.</p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
